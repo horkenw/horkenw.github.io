@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Head tag -->
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Title -->
+  
+  <title>偽寂寞星球主視覺 - Horken&#39;s Blog</title>
+
+  <!--Favicon-->
+  <link rel="icon" href="favicon/favicon.ico">
+
+  <!--Description-->
+  
+      <meta name="description" content="前幾天看到寂寞星球他們的主視覺，覺得那個感覺真的不錯。所以就決定去把他試著仿照做一個出來。
+Base Plugin:jQueryowl-caouselanimate.css
+看看成果:偽寂寞星球主視覺
+原始碼
+完成這個工作，主要分成幾個部分：
+
+圖片輪播
+圖片漸進縮小的動畫
+底下簡介的點擊跳躍圖片
+">
+  
+
+  <!--Author-->
+  
+      <meta name="author" content="Horken Wong">
+  
+
+  <!-- Pure CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Crimson+Text|Open+Sans:300,800" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/styles.css">
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+
+  <body>
+  	<div class="container-fluid navbar-container m-sm-5">
+      <!-- Header -->
+      <nav class="navbar navbar-toggleable-sm navbar-light px-1 py-3 my-3 mb-sm-5">
+  <a class="navbar-brand ml-2" href="/">Horken's Blog</a>
+  <button class="navbar-toggler navbar-toggler-right py-2" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse text-center" id="navbarCollapse">
+    <ul class="navbar-nav ml-auto my-auto">
+      
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/horkenw">About</a>
+        </li>
+      
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">Contact</a>
+        </li>
+      
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.instagram.com">Instagram</a>
+        </li>
+      
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.linkedin.com/in/horken-wong">LinkedIn</a>
+        </li>
+      
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.facebook.com">Facebook</a>
+        </li>
+      
+    </ul>
+    <hr class="hidden-md-up" />
+  </div>
+</nav>
+
+
+  		<div class="row">
+  			<div class="col-12 mb-4">
+  <img class="img-fluid project-img" src="/images/grassland.jpg" alt="偽寂寞星球主視覺">
+</div>
+<div class="col-lg-4 col-12 pt-3 px-4 pr-lg-5">
+  <h1>偽寂寞星球主視覺</h1>
+</div>
+<div class="col-lg-8 col-12 pt-lg-3 mb-4 pl-lg-5 px-lg-0 px-4 portfolio-content">
+  <p>前幾天看到寂寞星球他們的主視覺，覺得那個感覺真的不錯。<br>所以就決定去把他試著仿照做一個出來。</p>
+<p>Base Plugin:<br>jQuery<br>owl-caousel<br>animate.css</p>
+<p>看看成果:<br><a href="http://horkenw.github.io/project/heroBanner/" target="_blank" rel="noopener">偽寂寞星球主視覺</a></p>
+<p><a href="https://github.com/horkenw/horkenw.github.io/tree/master/project/heroBanner" target="_blank" rel="noopener">原始碼</a></p>
+<p>完成這個工作，主要分成幾個部分：</p>
+<ul>
+<li>圖片輪播</li>
+<li>圖片漸進縮小的動畫</li>
+<li>底下簡介的點擊跳躍圖片</li>
+<li>根據點選去橫向移動上方的橫條</li>
+<li>畫面改變的定位與大小</li>
+<li>底下簡介的布置方式</li>
+</ul>
+<h3 id="圖片輪播-amp-底下簡介的點擊跳躍圖片"><a href="#圖片輪播-amp-底下簡介的點擊跳躍圖片" class="headerlink" title="圖片輪播 &amp; 底下簡介的點擊跳躍圖片"></a>圖片輪播 &amp; 底下簡介的點擊跳躍圖片</h3><p>這部分算簡單，畢竟owl-caousel都已經完成這個工作了，我需要做的就是call method就可以達到我要的東西。</p>
+<h3 id="圖片漸進縮小的動畫"><a href="#圖片漸進縮小的動畫" class="headerlink" title="圖片漸進縮小的動畫"></a>圖片漸進縮小的動畫</h3><p>這邊除了靠 animate.css去做移動時候的動畫之外，一開始進去的圖片漸漸縮小功能<br>則是用 css keyframe 去寫一個簡單的縮小動畫，以下給個範例。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.owl-item</span> <span class="selector-class">.item</span> &#123;</span><br><span class="line">    <span class="attribute">-webkit-transform</span>: <span class="built_in">translateZ</span>(0);</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">translateZ</span>(0);</span><br><span class="line">    <span class="attribute">-webkit-animation</span>: <span class="number">16s</span> forwards zoomScale;</span><br><span class="line">    <span class="attribute">animation</span>: <span class="number">16s</span> forwards zoomScale;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">    <span class="attribute">z-index</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@<span class="keyword">keyframes</span> zoomScale &#123;</span><br><span class="line">    <span class="selector-tag">from</span> &#123;</span><br><span class="line">        <span class="attribute">transform</span>: <span class="built_in">scale</span>(1.2);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-tag">to</span> &#123;</span><br><span class="line">        <span class="attribute">transform</span>: <span class="built_in">scale</span>(1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="根據點選去橫向移動上方的橫條"><a href="#根據點選去橫向移動上方的橫條" class="headerlink" title="根據點選去橫向移動上方的橫條"></a>根據點選去橫向移動上方的橫條</h3><p>接下來這部分大概是我覺得這其中最困難的一個，因為每次點擊的時候都是一個自己的li，這就造成我完全沒辦法抓他的左邊座標，並且要找出對應的X座標，才能給滑動的距離。<br>最後在 jQuery 找到 <code>offset()</code>,這可以幫忙我抓到我當前點的元素他距離邊界的距離，才能用來定位移動距離。<br><strong>不要用當前滑鼠點下去的座標，因為會落差，畢竟是以li為單位，而不是當前點擊的位置</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'.point_bar'</span>).css(<span class="string">'left'</span>, $(target).offset().left)</span><br></pre></td></tr></table></figure>
+<p>以上是我這次遇到比較棘手的問題。</p>
+<p>喔!! 對了，我還自己增加了一個有趣的功能，會根據當前圖片的色彩明亮度，簡單調整字體的顏色。<br>也就是說當使用較暗的圖片會變成白色，反之則使用黑色。</p>
+<p>這部分則是使用到CANVAS的色彩解析來判斷，詳細的解釋之前因該有說過，就不再贅述。</p>
+
+</div>
+
+
+      </div>
+      
+  	</div>
+
+    <!-- After footer scripts -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+  </body>
+</html>
