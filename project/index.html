@@ -18,79 +18,16 @@
       <div
         class="max-w-[1200px] m-auto h-screen p-4 flex flex-wrap justify-center items-center"
       >
-        <div class="rounded-2xl overflow-hidden drop-shadow-xl p-5 bg-white">
-          <div class="p-5 max-w-lg bg-blue-300 rounded-3xl">
+        <div
+          class="rounded-2xl overflow-hidden drop-shadow-xl p-5 bg-white lg:w-3/6"
+        >
+          <div class="p-5 max-w-xl bg-blue-300 rounded-3xl m-auto">
             <div class="font-bold text-gray-800">結果輸出</div>
             <div
-              class="mt-5 flex justify-between gap-3 flex-col md:flex-row md:flex-wrap"
-            >
-              <div class="bg-gray-100 px-4 py-2 rounded-md">
-                <div class="font-bold text-lg">隊長名</div>
-                <ol class="list-disc inline-block pl-4">
-                  <li>隊員名</li>
-                  <li>隊員名</li>
-                  <li>隊員名</li>
-                </ol>
-              </div>
-              <div class="bg-gray-100 px-4 py-2 rounded-md">
-                <div class="font-bold text-lg">隊長名</div>
-                <ol class="list-disc inline-block pl-4">
-                  <li>隊員名</li>
-                  <li>隊員名</li>
-                  <li>隊員名</li>
-                </ol>
-              </div>
-              <div class="bg-gray-100 px-4 py-2 rounded-md">
-                <div class="font-bold text-lg">隊長名</div>
-                <ol class="list-disc inline-block pl-4">
-                  <li>隊員名</li>
-                  <li>隊員名</li>
-                  <li>隊員名</li>
-                </ol>
-              </div>
-              <div class="bg-gray-100 px-4 py-2 rounded-md">
-                <div class="font-bold text-lg">隊長名</div>
-                <ol class="list-disc inline-block pl-4">
-                  <li>隊員名</li>
-                  <li>隊員名</li>
-                  <li>隊員名</li>
-                </ol>
-              </div>
-              <div class="bg-gray-100 px-4 py-2 rounded-md">
-                <div class="font-bold text-lg">隊長名</div>
-                <ol class="list-disc inline-block pl-4">
-                  <li>隊員名</li>
-                  <li>隊員名</li>
-                  <li>隊員名</li>
-                </ol>
-              </div>
-              <div class="bg-gray-100 px-4 py-2 rounded-md">
-                <div class="font-bold text-lg">隊長名</div>
-                <ol class="list-disc inline-block pl-4">
-                  <li>隊員名</li>
-                  <li>隊員名</li>
-                  <li>隊員名</li>
-                </ol>
-              </div>
-              <div class="bg-gray-100 px-4 py-2 rounded-md">
-                <div class="font-bold text-lg">隊長名</div>
-                <ol class="list-disc inline-block pl-4">
-                  <li>隊員名</li>
-                  <li>隊員名</li>
-                  <li>隊員名</li>
-                </ol>
-              </div>
-              <div class="bg-gray-100 px-4 py-2 rounded-md">
-                <div class="font-bold text-lg">隊長名</div>
-                <ol class="list-disc inline-block pl-4">
-                  <li>隊員名</li>
-                  <li>隊員名</li>
-                  <li>隊員名</li>
-                </ol>
-              </div>
-            </div>
+              class="result mt-5 flex justify-between gap-3 flex-col md:flex-row md:flex-wrap"
+            ></div>
           </div>
-          <div class="mt-5 max-w-lg space-y-4">
+          <div class="mt-5 max-w-xl space-y-4 m-auto">
             <div class="flex">
               <label class="grow mr-2" for="group" title="group">
                 <input
@@ -98,6 +35,7 @@
                   type="number"
                   id="group"
                   min="1"
+                  max="10"
                   value="1"
                   class="inline-block w-full px-3 py-1.5 text-base bg-gray-100 bg-clip-padding rounded-lg border border-solid border-gray-300 transition ease-in-out m-0 focus:text-gray-700 focus:border-blue-600 focus:outline-none"
                 />
@@ -134,13 +72,8 @@
       </div>
     </div>
     <template id="team">
-      <div class="bg-gray-100 px-4 py-2 rounded-md">
-        <div class="font-bold text-lg">隊長名</div>
-        <ol class="list-disc inline-block pl-4">
-          <li>隊員名</li>
-          <li>隊員名</li>
-          <li>隊員名</li>
-        </ol>
+      <div class="bg-gray-100 px-4 py-2 rounded-md w-28">
+        <ol class="member list-disc inline-block pl-4"></ol>
       </div>
     </template>
     <script>
@@ -172,12 +105,17 @@
         const teamLead = document.querySelector("#teamlead");
         // The result will be using creat table
         let resultData;
+        // The result will place as HTML structure
+        const tableResults = [];
         needTeamLead = teamLead.checked;
 
         // Using default data
         if (!textArea.value) {
           resultData = getRandomGroupResult(fakeArr, teamGroup);
-          generateTableList(resultData);
+          resultData.forEach((group) => {
+            tableResults.push(generateTableListItems(group, needTeamLead));
+          });
+          renderHTMLView(tableResults);
           return null;
         }
 
@@ -190,8 +128,11 @@
           return null;
         }
         resultData = getRandomGroupResult(teamMembers, teamGroup);
-        generateTableList(resultData);
-        // 1;2;4. ;2;   2; 1.   4;6 ;3.     ;  7;
+        resultData.forEach((group) => {
+          tableResults.push(generateTableListItems(group, needTeamLead));
+        });
+        renderHTMLView(tableResults);
+        // 傑文; Justin;ED;Ethan;Rocky;偉倫
       });
 
       function getRandomGroupResult(arrData, groups) {
@@ -225,8 +166,37 @@
         return results;
       }
 
-      function generateTableList(dataResults, col, tlRequest) {
-        console.log(dataResults);
+      function generateTableListItems(groupResult, tlRequest) {
+        const template = document.querySelector("#team");
+        const clone = template.content.cloneNode(true);
+        const memberEl = clone.querySelector(".member");
+        if (tlRequest) {
+          // Generate team leader
+          const leadEl = document.createElement("div");
+          leadEl.classList.add("leader", "font-bold", "text-lg");
+          console.log(groupResult);
+          setupContent(leadEl, groupResult.shift());
+          clone.querySelector("div").insertBefore(leadEl, memberEl);
+        }
+        groupResult.forEach((member) => {
+          // Generate team member
+          const li = document.createElement("li");
+          setupContent(li, member);
+          memberEl.appendChild(li);
+        });
+        return clone;
+      }
+
+      function setupContent(el, content) {
+        el.innerText = content;
+      }
+
+      function renderHTMLView(htmlStru) {
+        const rootEl = document.querySelector(".result");
+        rootEl.innerHTML = "";
+        htmlStru.forEach((html) => {
+          rootEl.appendChild(html);
+        });
       }
     </script>
   </body>
